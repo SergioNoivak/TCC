@@ -1,0 +1,228 @@
+
+
+
+  <div  class="menuSuperior1" style="display:flex; justify-content: center;">
+    <div class="spectrum-Tabs spectrum-Tabs--horizontal spectrum-Tabs--compact" style="display: flex; width: 200px;">
+      <div (click)="mudarAba(item)" *ngFor="let item of tabs" style="flex-grow: 1; justify-content: space-between;" class="spectrum-Tabs-item " [ngClass]="{'is-selected': item.active}" tabindex="0">
+        <span class="spectrum-Tabs-itemLabel">{{item.nome}}</span>
+      </div>
+      <div  *ngFor="let item of tabs" class="spectrum-Tabs-selectionIndicator" [ngStyle]="{'width': item.label.width,'left': item.label.left, 'visibility':item.active?'inherit':'hidden'}"></div>
+    </div>
+
+</div>
+
+<div *ngIf="activeTab=='Comparação'" class="menuSuperior2">
+  <div></div>
+<div class="grid">
+  <div class="cartao1" >
+    Autômato Celular Elementar
+    <input *ngIf="modo==2" style="width:20%; height: 22px; overflow: hidden;" type="number" placeholder="" name="field" value="" class="form-control" >
+  </div>
+  <div  class="cartao2" appIsRegra >
+
+    Rede de Autômato Celular
+
+    <select [(ngModel)] ="redeSmallWorld" (change)="mudarRedeSmallWorld($event.target.value)" style="height: 22px; overflow: hidden;" class="form-control form-control-sm" id="select-4">
+      <option value="" selected="selected" disabled="disabled">Selecione uma rede</option>
+        <option value="1">Rede Small world 1</option>
+        <option value="2">Rede Small world 2</option>
+        <option value="3">Rede Small world 3</option>
+        <option value="4">Rede Small world 4</option>
+    </select>
+
+<!-- <input   type="number" placeholder="" name="field" value="" class="form-control" > -->
+</div>
+</div>
+
+
+</div>
+
+<div class="tela gridTela">
+<div *ngIf="activeTab =='Comparação' || activeTab =='Inspeção'" class="menuLateral" style="padding-left: 5px;padding-right: 5px;">
+<!-- <div *ngFor="let item of [1,2,3]">
+
+  <img src="../../assets/icons/favicon.png" alt="" class="" width="32" height="32">
+  fdsafdsafdsa
+</div> -->
+
+<div *ngIf="activeTab=='Inspeção'">
+  <label for="lifestory" class="spectrum-FieldLabel">Regra n°</label>
+  <div class="spectrum-Textfield spectrum-Textfield--quiet">
+
+
+    <!-- <input type="number"  (ngModelChange)="repintarRegra($event)" [(ngModel)]="inputRegra" class="form-control" placeholder="Text input"> -->
+</div>
+</div>
+
+<label for="">Quadro selecionado</label>
+<input [(ngModel)]="clicadoIdCanvas" type="text" class="form-control form-control-lg" placeholder="Text input">
+
+
+<div class="spectrum-Slider" style="margin-top: 30px;">
+  <div class="spectrum-Slider-labelContainer">
+    <label class="spectrum-Slider-label" id="spectrum-Slider-label-8" for="spectrum-Slider-input-8">Tamanho<br> Reticulado</label>
+    <div class="spectrum-Slider-value" role="textbox" aria-readonly="true" aria-labelledby="spectrum-Slider-label-8">{{inputTamanhoReticulado}}</div>
+  </div>
+  <div class="spectrum-Slider-controls">
+    <div class="spectrum-Slider-track"></div>
+    <div  style="left: 40%;">
+      <input (change)="repintarTudo()" style="width: 100%;" type="range"  [(ngModel)]="inputTamanhoReticulado" step="1" min="1" max="100" id="spectrum-Slider-input-8">
+    </div>
+    <div class="spectrum-Slider-track"></div>
+  </div>
+
+</div>
+
+
+<div class="spectrum-Slider" style="margin-top: 30px;">
+  <div class="spectrum-Slider-labelContainer">
+    <label class="spectrum-Slider-label" id="spectrum-Slider-label-8" for="spectrum-Slider-input-8">Espaços<br> de tempo</label>
+    <div class="spectrum-Slider-value" role="textbox" aria-readonly="true" aria-labelledby="spectrum-Slider-label-8">{{inputEspacosDeTempo}}</div>
+  </div>
+  <div class="spectrum-Slider-controls">
+    <div class="spectrum-Slider-track"></div>
+    <div  style="left: 40%;">
+      <input appIsRegra  (change)="repintarTudo()" style="width: 100%;" type="range"  [(ngModel)]="inputEspacosDeTempo" step="1" min="1" max="50" id="spectrum-Slider-input-8">
+    </div>
+    <div class="spectrum-Slider-track"></div>
+  </div>
+
+</div>
+
+
+
+<details class="collapse-panel w-400 mw-full mt-20" open> <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100%, mt-20 = margin-top: 2rem (20px) -->
+  <summary  class="collapse-header">
+   Modo
+  </summary>
+  <div class="collapse-content">
+
+
+<!-- Multi-select box -->
+
+
+<!-- Select box -->
+<select appIsRegra [(ngModel)]="modo" class="form-control" id="select-1">
+  <option value="1">Regra fixa</option>
+  <option value="2">Entre Regras</option>
+  <option value="3">Dinâmico</option>
+</select>
+
+<div *ngIf="modo==1" >
+  <input [attr.disabled]="aptoEditar?undefined:true"  type="number"  (ngModelChange)="repintarRegra($event)" [(ngModel)]="inputRegra" class="form-control" placeholder="Text input">
+</div>
+
+  </div>
+</details>
+
+
+
+
+<!-- Full-screen modal -->
+<div class="modal modal-full ie-scroll-fix" id="modal-5" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <a href="#" class="close" role="button" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </a>
+      <div >
+
+
+        <div style="display:flex; justify-content: center;">
+
+          <div style="display: grid; grid-template-columns: repeat(2,160px);grid-template-rows: repeat(3,140px);" >
+
+            <div   *ngFor="let linha of checkboxReticulado" style="display: flex; justify-content: center; align-self: center;" >
+              <div style="display: grid; grid-template-columns: repeat(10,13px);grid-template-rows: repeat(10,13px);">
+                <input [checked]="reticulado==1?'checked':''" *ngFor="let reticulado of linha" type="checkbox" id="checkbox-1" >
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div style="display:flex; justify-content: space-around; align-self: center; padding-left: 40%; padding-right: 40%; margin-top: 100px;">
+              <button class="btn btn-danger" type="button">Cancelar</button>
+              <button class="btn btn-primary" type="button">Ok</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <a  href="#modal-5" style="display: flex; justify-content: space-around; margin-top: 15px;  ">
+      <button style="border-radius: 10em;" class="btn" type="button">Editar Reticulado</button>
+    </a>
+
+
+
+
+
+
+
+
+</div>
+
+<div *ngIf="activeTab=='Comparação'" class="painel">
+
+
+  <div class="gridExperimentos">
+    <app-cartao-experimento [configuracaoReticulado]="configuracoesReticulado[0]" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[0]" [identificador]="'1'"></app-cartao-experimento>
+    <app-cartao-experimento [configuracaoReticulado]="configuracoesReticulado[1]" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[1]" [identificador]="'2'"></app-cartao-experimento>
+    <app-cartao-experimento [configuracaoReticulado]="configuracoesReticulado[2]" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[2]" [identificador]="'3'"></app-cartao-experimento>
+    <app-cartao-experimento [salvar]="true" [configuracaoReticulado]="configuracoesReticulado[3]" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[3]" [identificador]="'4'"></app-cartao-experimento>
+    <app-cartao-experimento [configuracaoReticulado]="configuracoesReticulado[4]" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[4]" [identificador]="'5'"></app-cartao-experimento>
+    <app-cartao-experimento [configuracaoReticulado]="configuracoesReticulado[5]" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(20,115,230)'" [numeroRegra]="numerosDeRegra[5]" [identificador]="'6'"></app-cartao-experimento>
+
+  </div>
+  <div class="gridExperimentos" >
+    <app-cartao-experimento #rede7    [configuracaoReticulado]="configuracoesReticulado[0]" [redeEnvolvida]="redeSmallWorld" [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado"  (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[6]" [identificador]="'7'"></app-cartao-experimento>
+    <app-cartao-experimento #rede8    [configuracaoReticulado]="configuracoesReticulado[1]" [redeEnvolvida]="redeSmallWorld" [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[7]" [identificador]="'8'"></app-cartao-experimento>
+    <app-cartao-experimento #rede9    [configuracaoReticulado]="configuracoesReticulado[2]" [redeEnvolvida]="redeSmallWorld" [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[8]" [identificador]="'9'"></app-cartao-experimento>
+    <app-cartao-experimento [salvar]="true" #rede10   [configuracaoReticulado]="configuracoesReticulado[3]" [redeEnvolvida]="redeSmallWorld" [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[9]" [identificador]="'10'"></app-cartao-experimento>
+    <app-cartao-experimento #rede11   [configuracaoReticulado]="configuracoesReticulado[4]" [redeEnvolvida]="redeSmallWorld" [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[10]" [identificador]="'11'"></app-cartao-experimento>
+    <app-cartao-experimento #rede12   [configuracaoReticulado]="configuracoesReticulado[5]" [redeEnvolvida]="redeSmallWorld" [isRede]="true" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgb(53,250,0)'" [numeroRegra]="numerosDeRegra[11]" [identificador]="'12'"></app-cartao-experimento>
+
+  </div>
+</div>
+
+
+<div *ngIf="activeTab=='Inspeção'" class="painel">
+
+
+  <div class="gridExperimentos">
+    <app-cartao-experimento [mode]="activeTab" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgba(255, 255, 255, 0.692)'" [numeroRegra]="numerosDeRegra[0]" [identificador]="'1'"></app-cartao-experimento>
+    <app-cartao-experimento [mode]="activeTab" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgba(255, 255, 255, 0.692)'" [numeroRegra]="numerosDeRegra[1]" [identificador]="'2'"></app-cartao-experimento>
+    <app-cartao-experimento [mode]="activeTab" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgba(255, 255, 255, 0.692)'" [numeroRegra]="numerosDeRegra[2]" [identificador]="'3'"></app-cartao-experimento>
+    <app-cartao-experimento [mode]="activeTab" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgba(255, 255, 255, 0.692)'" [numeroRegra]="numerosDeRegra[3]" [identificador]="'4'"></app-cartao-experimento>
+    <app-cartao-experimento [mode]="activeTab" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgba(255, 255, 255, 0.692)'" [numeroRegra]="numerosDeRegra[4]" [identificador]="'5'"></app-cartao-experimento>
+    <app-cartao-experimento [mode]="activeTab" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgba(255, 255, 255, 0.692)'" [numeroRegra]="numerosDeRegra[5]" [identificador]="'6'"></app-cartao-experimento>
+
+  </div>
+  <div class="gridExperimentos" >
+    <app-cartao-experimento [mode]="activeTab" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado"  (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgba(255, 255, 255, 0.692)'" [numeroRegra]="numerosDeRegra[6]" [identificador]="'7'"></app-cartao-experimento>
+    <app-cartao-experimento [mode]="activeTab" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgba(255, 255, 255, 0.692)'" [numeroRegra]="numerosDeRegra[7]" [identificador]="'8'"></app-cartao-experimento>
+    <app-cartao-experimento [mode]="activeTab" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgba(255, 255, 255, 0.692)'" [numeroRegra]="numerosDeRegra[8]" [identificador]="'9'"></app-cartao-experimento>
+    <app-cartao-experimento [mode]="activeTab" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgba(255, 255, 255, 0.692)'" [numeroRegra]="numerosDeRegra[9]" [identificador]="'10'"></app-cartao-experimento>
+    <app-cartao-experimento [mode]="activeTab" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgba(255, 255, 255, 0.692)'" [numeroRegra]="numerosDeRegra[10]" [identificador]="'11'"></app-cartao-experimento>
+    <app-cartao-experimento [mode]="activeTab" [espacosDeTempo]="inputEspacosDeTempo" [tamanhoReticulado]="inputTamanhoReticulado" (clicadoCanvas)="mudarInputRegra($event)" [corEnvolvida]="'rgba(255, 255, 255, 0.692)'" [numeroRegra]="numerosDeRegra[11]" [identificador]="'12'"></app-cartao-experimento>
+
+  </div>
+</div>
+
+
+<div *ngIf="activeTab=='Relatórios'" class="painel">
+<app-relatorios></app-relatorios>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,96 @@
+// @import "./../node_modules/@spectrum-css/vars/dist/spectrum-global.css";
+// @import "./../node_modules/@spectrum-css/vars/dist/spectrum-medium.css";
+// @import "./../node_modules/@spectrum-css/vars/dist/spectrum-large.css";
+
+// // @import "./../node_modules/@spectrum-css/vars/dist/spectrum-light.css";
+// @import "./../node_modules/@spectrum-css/vars/dist/spectrum-dark.css";
+// @import "./../node_modules/@spectrum-css/page/dist/index-vars.css";
+
+// @import "./../node_modules/@spectrum-css/button/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/card/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/textfield/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/fieldlabel/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/colorhandle/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/tabs/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/slider/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/menu/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/dropdown/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/quickaction/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/checkbox/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/asset/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/colorloupe/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/popover/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/toggle/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/accordion/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/actionbar/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/actionmenu/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/alert/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/asset/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/assetlist/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/avatar/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/banner/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/barloader/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/breadcrumb/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/button/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/buttongroup/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/calendar/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/card/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/checkbox/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/circleloader/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/coachmark/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/cyclebutton/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/decoratedtextfield/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/dialog/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/dropdown/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/dropindicator/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/dropzone/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/fieldgroup/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/fieldlabel/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/icons/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/illustratedmessage/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/inputgroup/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/label/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/link/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/menu/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/miller/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/page/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/pagination/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/popover/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/quickaction/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/radio/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/rating/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/rule/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/search/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/searchwithin/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/sidenav/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/slider/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/splitbutton/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/splitview/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/statuslight/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/steplist/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/stepper/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/table/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/tabs/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/tags/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/textfield/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/toast/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/toggle/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/tooltip/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/treeview/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/typography/dist/index-vars.css";
+// @import "./../node_modules/@spectrum-css/underlay/dist/index-vars.css";
+@import "./../node_modules/halfmoon/css/halfmoon.min.css";
+
+
+
+body
+{
+  --primary-color: rgb(20,115,230);
+
+  margin: 0px;
+  background-color: rgb(37,37,37);
+}
+html, body {
+  margin:0px;
+  height:100%;
+}
